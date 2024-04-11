@@ -8,14 +8,12 @@ rpicam-vid \
 --denoise cdn_off \
 --sharpness 1.0 \
 --level 4.1 \
---framerate 25 \
+--framerate 30 \
 --width 640 \
 --height 360 \
 -t 0 \
 -n \
---codec libav \
---libav-format mpegts \
---libav-video-codec h264_v4l2m2m \
+--codec mjpeg \
 -o - |
 
 ffmpeg \
@@ -32,7 +30,7 @@ ffmpeg \
 -i - \
 -c:v h264_v4l2m2m \
 -b:v 1700k \
--fpsmax 15 \
+-fpsmax 30 \
 -c:a libopus \
 -b:a 32k \
 -application lowdelay \
@@ -42,3 +40,9 @@ ffmpeg \
 -f rtsp \
 -rtsp_transport tcp \
 rtsp://:8554/mystream
+
+
+# --codec libav \
+# --libav-format mpegts \
+# --libav-video-codec h264_v4l2m2m \
+
